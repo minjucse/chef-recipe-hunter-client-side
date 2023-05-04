@@ -1,27 +1,28 @@
 import React, { useContext } from 'react';
-
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Button, Container, Form } from 'react-bootstrap';
 import { AuthContext } from '../../../provider/AuthProvider';
 
+import { FcGoogle } from 'react-icons/fc';
+import { FaGithub } from 'react-icons/fa';
 
 const Login = () => {
 
   const { signIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || '/chefCategory/0'
+  const from = location.state?.from?.pathname || '/'
 
   const handleLogin = event => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     signIn(email, password)
       .then(result => {
-        const loggedUser = result.user;
-        console.log(loggedUser);
+        //const loggedUser = result.user;
+        //console.log(loggedUser);
         navigate(from, { replace: true })
       })
       .catch(error => {
@@ -29,9 +30,9 @@ const Login = () => {
       })
   }
   return (
-    <Container className='w-25 mx-auto'>
-      <h3>Please Login</h3>
-      <Form onSubmit={handleLogin}>
+    <Container className='w-50 wrap-login mx-auto '>
+      <h3 className='form-title'>Please Login</h3>
+      <Form onSubmit={handleLogin} className='login-form'>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" name='email' placeholder="Enter email" required />
@@ -42,13 +43,28 @@ const Login = () => {
           <Form.Control type="password" name='password' placeholder="Password" required />
         </Form.Group>
 
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" className='signin-button added-bg-btn'>
           Login
         </Button>
         <br />
-        <Form.Text className="text-secondary">
-          Don't Have an Account? <Link to="/register">Register</Link>
-        </Form.Text>
+
+        <div className="text-center sign-area">
+          <span className="txt1">
+            Or login with
+          </span>
+        </div>
+        <div className="d-flex login-social">
+          <button className="login-social-item"> <FcGoogle></FcGoogle></button>
+          <button className="login-social-item"> <FaGithub></FaGithub></button>
+        </div>
+        <div className='text-center'>
+          Don't Have an Account?
+          <br></br>
+          <Link to="/sign-up">
+            Sign up now
+          </Link>
+        </div>
+        
         <Form.Text className="text-success">
 
         </Form.Text>

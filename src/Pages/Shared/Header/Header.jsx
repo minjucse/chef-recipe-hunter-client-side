@@ -1,7 +1,18 @@
-import React from 'react'
+import React , { useContext }from 'react'
 import { Link } from 'react-router-dom';
 
+import { FaUserCircle } from 'react-icons/fa';
+import { AuthContext } from '../../../provider/AuthProvider';
+
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch(error => console.log(error));
+    }
+
     return (
         <div className='row align-items-center header-menu'>
             <div className='col-xl-3 col-lg-2'>
@@ -33,7 +44,17 @@ const Header = () => {
             </div>
             <div className='col-xl-3 col-lg-3 d-none d-lg-block'>
                 <div className='applying'>
-                    <button type="button" className="btn btn-primary btn-lg added-bg-btn">Sign In </button>
+                    {
+                        user && <FaUserCircle style={{ fontSize: '2rem' }}></FaUserCircle>
+                    }
+                    {user ?
+                        <button onClick={handleLogOut} type="button" className="btn btn-primary btn-lg added-bg-btn">Sign Out </button>
+                         :
+                        <Link to="/sign-in">
+                            <button type="button" className="btn btn-primary btn-lg added-bg-btn">Sign In </button>
+                        </Link>
+                    }
+
                 </div>
             </div>
         </div>
