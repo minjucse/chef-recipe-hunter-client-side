@@ -8,7 +8,7 @@ import { FaGithub } from 'react-icons/fa';
 
 const Login = () => {
 
-  const { signIn } = useContext(AuthContext);
+  const { signIn, signInGoogle, signInGitub } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/'
@@ -21,14 +21,36 @@ const Login = () => {
 
     signIn(email, password)
       .then(result => {
-        //const loggedUser = result.user;
-        //console.log(loggedUser);
+        const loggedUser = result.user;
+        console.log(loggedUser);
         navigate(from, { replace: true })
       })
       .catch(error => {
         console.log(error);
+      });
+
+  };
+
+  const handleSignInGoogle = () => {
+    signInGoogle()
+      .then(result => {
+        const user = result.user;
+        navigate(from, { replace: true })
+      }).catch(error => {
+        console.log('error', error.message);
+
       })
-  }
+  };
+  const handleSignInGitHub = () => {
+    signInGitub().then(result => {
+      const user = result.user;
+      navigate(from, { replace: true })
+    }).catch(error => {
+      console.log('error', error.message);
+
+    })
+
+  };
   return (
     <Container className='w-50 wrap-login mx-auto '>
       <h3 className='form-title'>Please Login</h3>
@@ -54,8 +76,8 @@ const Login = () => {
           </span>
         </div>
         <div className="d-flex login-social">
-          <button className="login-social-item"> <FcGoogle></FcGoogle></button>
-          <button className="login-social-item"> <FaGithub></FaGithub></button>
+          <button className="login-social-item" onClick={handleSignInGoogle}> <FcGoogle></FcGoogle></button>
+          <button className="login-social-item" onClick={handleSignInGitHub}> <FaGithub></FaGithub></button>
         </div>
         <div className='text-center'>
           Don't Have an Account?
@@ -64,7 +86,7 @@ const Login = () => {
             Sign up now
           </Link>
         </div>
-        
+
         <Form.Text className="text-success">
 
         </Form.Text>

@@ -15,12 +15,13 @@ export const Register = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
+    
 
     console.log(name, photo, email, password)
     createUser(email, password)
       .then(result => {
         const createdUser = result.user;
-        console.log(createdUser);
+        
       })
       .catch(error => {
         console.log(error);

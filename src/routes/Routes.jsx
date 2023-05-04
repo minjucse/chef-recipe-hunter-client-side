@@ -12,12 +12,9 @@ import { Register } from "../Pages/Login/Register/Register";
 
 const router = createBrowserRouter([
     {
-      path: "*",
-      errorElement: <PageNotFount/>
-    },
-    {
       path: "/",
       element: <Main></Main>,
+      errorElement: <PageNotFount/>,
       children: [
         {
           path: '/',
