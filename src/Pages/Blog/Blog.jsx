@@ -4,8 +4,8 @@ import React from 'react'
 const Blog = () => {
   return (
     <div className='container'>
-      <div className=" row">
-        <div className='col-md-8 card mt-4 p-4'>
+      <div className=" row mb-4">
+        <div className='col-md-10 card mt-4 p-4'>
           <div className="mb-4">
             <h1 className="font-bold mb-2">
               1. Tell us the differences between uncontrolled and controlled components.
