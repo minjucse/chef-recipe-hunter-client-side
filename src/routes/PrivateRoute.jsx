@@ -1,6 +1,6 @@
 
 import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../../provider/AuthProvider';
+import { AuthContext } from '../provider/AuthProvider';
 import { Navigate, useLocation } from 'react-router';
 import { Spinner } from 'react-bootstrap';
 

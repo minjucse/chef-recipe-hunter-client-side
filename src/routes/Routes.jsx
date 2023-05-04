@@ -7,7 +7,8 @@ import Home from "../Pages/Home/Home";
 import Blog from "../Pages/Blog/Blog";
 import Login from "../Pages/Login/Login/Login";
 import { Register } from "../Pages/Login/Register/Register";
-
+import ChefDetails from "../Pages/Chefs/ChefDetails/ChefDetails";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,16 @@ const router = createBrowserRouter([
         {
           path: '/',
           element: <Home></Home>,
+          loader: async () => {
+            const loadedFeatureds = await fetch('https://server-minjucse.vercel.app/chef');
+            return await loadedFeatureds.json();
+          },
+        },
+        {
+          path: '/chef-details/:id',
+          element:<PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
+          loader: ({params}) => fetch(`https://the-news-dragon-server-jhankarphero.vercel.app/news/${params.id}`)
+
         },
         {
           path: '/blog',

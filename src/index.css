@@ -62,7 +62,30 @@ ul, li {
 .added-bg-btn {
   background: linear-gradient(90deg, #7E90FE 0%, #9873FF 100%);
 }
-
+.banner-info{
+  width: 45%;
+  margin-top: 50px;
+  margin-right: 50px;
+}
+.banner-imgage{
+  width: 48%;
+}
+.banner-imgage img{
+  width: 100%;
+}
+.section-heading {
+  font-weight: 400;
+  font-size: 36px;
+  color: #1a1919;
+}
+.featured-entry {
+  border: 1px solid #E8E8E8;
+  padding: 40px;
+}
+.featured-img img {
+  width: 360px;
+  max-height: 266px;
+}
 .footer {
   overflow: hidden;
   background: #030972;
