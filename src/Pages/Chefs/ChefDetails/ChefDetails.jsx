@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 
 const ChefDetails = () => {
   const detailInfo = useLoaderData();
+  const [detail, setDetail] = useState(detailInfo);
+
   const [cart, setCart] = useState([]);
   
   useEffect(() => {
@@ -38,7 +40,44 @@ const ChefDetails = () => {
     }
   }
   return (
-    <div>ChefDetails</div>
+    <div className="container">
+
+      <div className=" heading-section text-center mx-auto mb-5 mt-5">
+        <h2 className="section-heading">Some Famous Receipies</h2>
+        
+      </div>
+      <div className="row d-flex">
+        {
+          detail.map((item, index) => (
+
+            <div className="col-md-4 mb-4" key={index}>
+              <div className="featured-entry align-self-stretch rounded">
+                <div className='featured-img'>
+                  <img src={item.image_url} alt="" />
+                </div>
+
+                <div className="text mt-3">
+                  <h3 className="sub-heading">
+                    {item.recipe_name}
+                  </h3>
+                  <p className='description'><strong>Ingredients: </strong>{item.ingredients} </p>
+                </div>
+                
+                <div className='info-area mb-3'>
+                  <span><strong>Method of Cooking:: </strong>{item.cooking_method}</span>
+                  
+                </div>
+                <div className='button-area  mt-3'>
+                <button className='btn btn-outline-primary'>Favourite</button>
+                  
+                </div>
+              </div>
+            </div>
+          ))}
+
+      </div>
+
+    </div>
   )
 }
 

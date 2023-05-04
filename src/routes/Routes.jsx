@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         {
           path: '/chef-details/:id',
           element:<PrivateRoute><ChefDetails></ChefDetails></PrivateRoute>,
-          loader: ({params}) => fetch(`https://the-news-dragon-server-jhankarphero.vercel.app/news/${params.id}`)
+          loader: ({params}) => fetch(`https://server-minjucse.vercel.app/chefDetail/${params.id}`)
 
         },
         {
