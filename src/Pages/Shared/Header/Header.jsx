@@ -42,7 +42,7 @@ const Header = () => {
                     </nav>
                 </div>
             </div>
-            <div className='col-xl-3 col-lg-3 d-none d-lg-block'>
+            <div className='col-xl-3 col-lg-3 '>
                 <div className='applying'>
                     {
                         user && <FaUserCircle style={{ fontSize: '2rem' }}></FaUserCircle>
