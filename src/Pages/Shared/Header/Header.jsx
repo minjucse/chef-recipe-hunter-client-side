@@ -1,10 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
     const location = useLocation();
+    const [showResults, setShowResults] = useState(false);
+    const onClick = () => setShowResults(!showResults);
+
     const handleLogOut = () => {
         logOut()
             .then()
@@ -20,12 +23,13 @@ const Header = () => {
             </div>
             <div className='col-xl-6 col-lg-7'>
                 <div className='main-menu'>
+                    
                     <nav className="navbar navbar-expand-lg navbar-light">
-                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onClick={onClick}>
                             <span className="navbar-toggler-icon"></span>
                         </button>
 
-                        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div className={showResults ? 'collapse navbar-collapse show': 'collapse navbar-collapse'} id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
                                     <Link className={location.pathname === '/'? 'nav-link text-warning': 'nav-link'} to="/">Home</Link>

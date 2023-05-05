@@ -18,11 +18,14 @@ a {
   font-weight: 500;
   text-decoration: none;
 }
-ul, li {
+
+ul,
+li {
   list-style: none;
   padding: 0px;
   margin: 0px;
 }
+
 .header-menu {
   margin-top: 45px !important;
 }
@@ -37,16 +40,19 @@ ul, li {
 .page-title {
   margin: 130px 0;
 }
-.user-profile{
+
+.user-profile {
   height: 50px;
   width: 50px;
   display: flex;
   margin-right: 20px;
 }
-.user-profile img{
+
+.user-profile img {
   width: 100%;
   border-radius: 50%;
 }
+
 .main-menu {
   text-align: center;
 }
@@ -71,31 +77,43 @@ ul, li {
 .added-bg-btn {
   background: linear-gradient(90deg, #7E90FE 0%, #9873FF 100%);
 }
-.banner-info{
+
+.banner-info {
   width: 45%;
   margin-top: 50px;
   margin-right: 50px;
 }
-.banner-imgage{
+
+.banner-imgage {
   width: 48%;
 }
-.banner-imgage img{
+
+.banner-imgage img {
   width: 100%;
 }
+
 .section-heading {
   font-weight: 400;
   font-size: 36px;
   color: #1a1919;
 }
-.checf-banner{
+
+.checf-banner {
   background: rgb(249, 249, 255);
 }
+
 .featured-entry {
   border: 1px solid #E8E8E8;
   padding: 40px;
 }
+
 .card-img-top {
   max-height: 266px;
+}
+
+.Receipie-img img {
+  width: 100%;
+  max-height: 300px;
 }
 
 .footer {
@@ -103,92 +121,118 @@ ul, li {
   background: #030972;
   padding: 4em 0;
 }
+
 .footer .logo a {
   color: #fff;
 }
+
 .footer p {
   color: rgba(255, 255, 255, 0.7);
 }
+
 .footer .ftco-footer-widget h2 {
-  
+
   color: #fff;
   margin-bottom: 40px;
   font-size: 20px;
   font-weight: 600;
 }
+
 .footer .opening-hours h4 {
   color: gray;
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
 }
+
 .block-23 ul li .icon {
   width: 40px;
   font-size: 18px;
   padding-top: 2px;
   color: white;
 }
+
 .block-23 ul li .icon {
   width: 40px;
   font-size: 18px;
   padding-top: 2px;
   color: white;
 }
+
 .block-23 ul li span {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.wrap-login{
-    
-    margin: 45px 0;
-    background: #fff;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
-    position: relative;
-}
-.form-title{
-  color: #fff;
-    line-height: 1.2;
-    text-align: center;
-    display: block;
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: #030972;
-    padding-top: 30px;
-    padding-bottom: 30px;
+.wrap-login {
+
+  margin: 45px 0;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 3px 20px 0 rgba(0, 0, 0, .1);
+  position: relative;
 }
 
-.login-form{
+.form-title {
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #030972;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.login-form {
   padding: 50px;
   margin-top: 70px;
 }
-.login-form a{
-  text-decoration:none ;
+
+.login-form a {
+  text-decoration: none;
 }
-.signin-button{
+
+.signin-button {
   width: 100%;
 }
-.sign-area{
+
+.sign-area {
   margin-top: 30px;
 }
-.login-social{
-   justify-content: center;
-   margin: 30px 0;
+
+.login-social {
+  justify-content: center;
+  margin: 30px 0;
 }
-.login-social-item{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #fff;
-    margin: 5px;
-    box-shadow: 0 5px 20px 0 rgba(0,0,0,.1);
-    border-color: #fff;
+
+.login-social-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin: 5px;
+  box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .1);
+  border-color: #fff;
+}
+
+@media screen and (max-width: 480px) {
+  .banner-info {
+    width: 100%;
+  }
+
+  .banner-imgage {
+    margin-top: 20px;
+  }
+  .navbar-collapse.show{
+    text-align: start;
+  }
 }
 
 @media (prefers-color-scheme: light) {
@@ -196,9 +240,11 @@ ul, li {
     color: #213547;
     background-color: #ffffff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
