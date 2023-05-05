@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useParams } from 'react-router-dom';
 import { toast } from "react-toastify";
 import Rating from 'react-rating';
 import '@smastrom/react-rating/style.css';
@@ -7,9 +7,18 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const ChefDetails = () => {
   const detailInfo = useLoaderData();
+  const { id } = useParams();
   const [detail, setDetail] = useState(detailInfo);
-
+  const [chef, setChef] = useState({});
   const [cart, setCart] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://server-minjucse.vercel.app/chef/${id}`)
+      .then((res) => res.json())
+      .then((data) =>
+        setChef(data)
+      );
+  }, []);
 
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('shopping-cart'));
@@ -43,7 +52,28 @@ const ChefDetails = () => {
   }
   return (
     <div className="container">
-
+      <div className="checf-banner d-flex justify-content-evenly align-items-center">
+        <div className="banner-info text-center">
+          <h1 className="banner-section-title">
+            {chef.name}
+          </h1>
+          <p>
+            {chef.description}
+          </p>
+          <p>
+            <strong>Experiences: </strong>{chef.experiences}
+          </p>
+          <p>
+            <strong>Number Of Recipe: </strong>{chef.numberOfRecipe}
+          </p>
+          <p>
+            <span> <strong>Likes: </strong>{chef.likes}</span>
+          </p>
+        </div>
+        <div className='banner-imgage'>
+          <img src={chef.image_url} alt="" />
+        </div>
+      </div>
       <div className=" heading-section text-center mx-auto mb-5 mt-5">
         <h2 className="section-heading">Some Famous Receipies</h2>
 
