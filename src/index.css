@@ -228,6 +228,7 @@ li {
   }
 
   .banner-imgage {
+    width: 100%;
     margin-top: 20px;
   }
   .navbar-collapse.show{

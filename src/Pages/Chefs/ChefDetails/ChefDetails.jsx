@@ -5,6 +5,7 @@ import Rating from 'react-rating';
 import '@smastrom/react-rating/style.css';
 import { FaStar, FaRegStar } from 'react-icons/fa';
 
+
 const ChefDetails = () => {
   const detailInfo = useLoaderData();
   const { id } = useParams();
@@ -26,30 +27,13 @@ const ChefDetails = () => {
       setCart(items);
     }
   }, []);
+  const [showButton, setShowButton] = useState(false);
+  const onClick = (id) => {
 
-  const handleAddToCart = (did) => {
-
-    let newCart = [];
-    const storedCart = localStorage.getItem('shopping-cart');
-    const shoppingCart = JSON.parse(storedCart);
-
-    if (shoppingCart != null) {
-      const exists = shoppingCart.find(pd => pd === did);
-
-      if (!exists) {
-
-        newCart = [...cart, did];
-        localStorage.setItem('shopping-cart', JSON.stringify(newCart));
-      }
-      else {
-        toast.error("You Have Already Aplied!");
-      }
-    }
-    else {
-      newCart = [...cart, did]
-      localStorage.setItem('shopping-cart', JSON.stringify(newCart));
-    }
-  }
+    setShowButton(true);
+    toast.success("Add Your Recipe !");
+  };
+ 
   return (
     <div className="container">
       <div className="checf-banner d-flex justify-content-evenly align-items-center">
@@ -106,7 +90,11 @@ const ChefDetails = () => {
 
                     <span className='ms-2'> {item?.rating}</span>
                   </div>
-                  <button className='btn btn-outline-primary'>Favourite</button>
+                  {showButton ? <button className='btn btn-outline-primary' disabled>Favourite</button>:
+                  <button className='btn btn-outline-primary' onClick={onClick(item.id)}>Favourite</button>
+                  }
+
+                  
                 </div>
               </div>
             </div>
