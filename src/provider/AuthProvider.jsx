@@ -3,6 +3,7 @@ import React, { useState, useEffect, createContext } from 'react';
 import {
     getAuth,
     createUserWithEmailAndPassword,
+    updateProfile ,
     onAuthStateChanged,
     signOut,
     signInWithEmailAndPassword,
@@ -23,6 +24,12 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+    const updateUser = (name, photo) => {
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photo
+          });
+    }
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -65,6 +72,7 @@ const AuthProvider = ({ children }) => {
         user,
         loading,
         createUser,
+        updateUser,
         signIn,
         logOut,
         signInGoogle,

@@ -3,7 +3,7 @@ import { Link, useLoaderData } from 'react-router-dom';
 
 const ChefList = () => {
   const loadCart = useLoaderData();
-  
+
   const [featured, setFeatured] = useState(loadCart);
 
   return (
@@ -19,28 +19,20 @@ const ChefList = () => {
           featured.map((item, index) => (
 
             <div className="col-md-4 mb-4" key={index}>
-              <div className="featured-entry align-self-stretch rounded">
-                <div className='featured-img'>
-                  <img src={item.image_url} alt="" />
-                </div>
-
-                <div className="text mt-3">
-                  <h3 className="sub-heading">
-                    {item.name}
-                  </h3>
-                  <p className='description'><strong>experiences: </strong>{item.experiences} </p>
-                </div>
-                
-                <div className='info-area mb-3'>
-                  <span><strong>Number Of Recipe: </strong>{item.numberOfRecipe}</span>
-                  <br/>
-                  <span> <strong>Likes: </strong>{item.likes}</span>
-                </div>
-                <div className='button-area  mt-3'>
-                <Link className='btn btn-outline-primary' to={`/chef-details/${item.id}`}>View Recipes</Link>
-                  
+              <div className='card'>
+                <img className="card-img-top" src={item.image_url} alt=""></img>
+                <div className="card-body">
+                  <h5 className="card-title"> {item.name}</h5>
+                  <p className="card-text"><strong>Experiences: </strong>{item.experiences}</p>
+                  <div className='info-area mb-3'>
+                    <span><strong>Number Of Recipe: </strong>{item.numberOfRecipe}</span>
+                    <br />
+                    <span> <strong>Likes: </strong>{item.likes}</span>
+                  </div>
+                  <Link className='btn btn-outline-primary' to={`/chef-details/${item.id}`}>View Recipes</Link>
                 </div>
               </div>
+              
             </div>
           ))}
 

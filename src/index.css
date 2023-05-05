@@ -37,7 +37,16 @@ ul, li {
 .page-title {
   margin: 130px 0;
 }
-
+.user-profile{
+  height: 50px;
+  width: 50px;
+  display: flex;
+  margin-right: 20px;
+}
+.user-profile img{
+  width: 100%;
+  border-radius: 50%;
+}
 .main-menu {
   text-align: center;
 }
@@ -82,10 +91,10 @@ ul, li {
   border: 1px solid #E8E8E8;
   padding: 40px;
 }
-.featured-img img {
-  width: 360px;
+.card-img-top {
   max-height: 266px;
 }
+
 .footer {
   overflow: hidden;
   background: #030972;

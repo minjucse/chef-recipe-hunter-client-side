@@ -1,12 +1,10 @@
-import React , { useContext }from 'react'
-import { Link } from 'react-router-dom';
-
-import { FaUserCircle } from 'react-icons/fa';
+import React, { useContext } from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../provider/AuthProvider';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-
+    const location = useLocation();
     const handleLogOut = () => {
         logOut()
             .then()
@@ -30,11 +28,11 @@ const Header = () => {
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/">Home</Link>
+                                    <Link className={location.pathname === '/'? 'nav-link text-warning': 'nav-link'} to="/">Home</Link>
                                 </li>
 
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="blog">Blog</Link>
+                                    <Link className={location.pathname === '/blog'? 'nav-link text-warning': 'nav-link'} to="/blog">Blog</Link>
                                 </li>
                             </ul>
 
@@ -43,13 +41,15 @@ const Header = () => {
                 </div>
             </div>
             <div className='col-xl-3 col-lg-3 '>
-                <div className='applying'>
+                <div className='applying d-flex'>
                     {
-                        user && <FaUserCircle style={{ fontSize: '2rem' }}></FaUserCircle>
+                        user && <div className='user-profile'>
+                            <img src={user.photoURL} alt="" />
+                        </div>
                     }
                     {user ?
                         <button onClick={handleLogOut} type="button" className="btn btn-primary btn-lg added-bg-btn">Sign Out </button>
-                         :
+                        :
                         <Link to="/sign-in">
                             <button type="button" className="btn btn-primary btn-lg added-bg-btn">Sign In </button>
                         </Link>

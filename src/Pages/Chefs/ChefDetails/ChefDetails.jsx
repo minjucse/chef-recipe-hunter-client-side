@@ -1,14 +1,16 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import { toast } from "react-toastify";
-
+import Rating from 'react-rating';
+import '@smastrom/react-rating/style.css';
+import { FaStar, FaRegStar } from 'react-icons/fa';
 
 const ChefDetails = () => {
   const detailInfo = useLoaderData();
   const [detail, setDetail] = useState(detailInfo);
 
   const [cart, setCart] = useState([]);
-  
+
   useEffect(() => {
     const items = JSON.parse(localStorage.getItem('shopping-cart'));
     if (items) {
@@ -21,10 +23,10 @@ const ChefDetails = () => {
     let newCart = [];
     const storedCart = localStorage.getItem('shopping-cart');
     const shoppingCart = JSON.parse(storedCart);
-    
+
     if (shoppingCart != null) {
       const exists = shoppingCart.find(pd => pd === did);
-      
+
       if (!exists) {
 
         newCart = [...cart, did];
@@ -34,7 +36,7 @@ const ChefDetails = () => {
         toast.error("You Have Already Aplied!");
       }
     }
-    else{
+    else {
       newCart = [...cart, did]
       localStorage.setItem('shopping-cart', JSON.stringify(newCart));
     }
@@ -44,32 +46,37 @@ const ChefDetails = () => {
 
       <div className=" heading-section text-center mx-auto mb-5 mt-5">
         <h2 className="section-heading">Some Famous Receipies</h2>
-        
+
       </div>
       <div className="row d-flex">
         {
           detail.map((item, index) => (
 
             <div className="col-md-4 mb-4" key={index}>
-              <div className="featured-entry align-self-stretch rounded">
-                <div className='featured-img'>
-                  <img src={item.image_url} alt="" />
-                </div>
+              <div className='card h-100'>
+                <img className="card-img-top" src={item.image_url} alt=""></img>
+                <div className="card-body">
+                  <h5 className="card-title"> {item.recipe_name}</h5>
+                  <p className="card-text"><strong>Ingredients: </strong>{item.ingredients} </p>
+                  <div className='info-area mb-3'>
+                    <span><strong>Method of Cooking:: </strong>{item.cooking_method}</span>
+                  </div>
+                  <div className='flex-grow-1 d-flex align-items-center mb-4'>
+                    {/* <Rating
+                      style={{ maxWidth: 150 }}
+                      value={Math.round(item?.rating || 0)} readOnly /> */}
+                    <Rating
+                      placeholderRating={item.rating} readonly
+                      emptySymbol={<FaRegStar></FaRegStar>}
+                      placeholderSymbol={<FaStar className='text-warning'></FaStar>}
+                      fullSymbol={<FaStar></FaStar>}
+                    >
 
-                <div className="text mt-3">
-                  <h3 className="sub-heading">
-                    {item.recipe_name}
-                  </h3>
-                  <p className='description'><strong>Ingredients: </strong>{item.ingredients} </p>
-                </div>
-                
-                <div className='info-area mb-3'>
-                  <span><strong>Method of Cooking:: </strong>{item.cooking_method}</span>
-                  
-                </div>
-                <div className='button-area  mt-3'>
-                <button className='btn btn-outline-primary'>Favourite</button>
-                  
+                    </Rating>
+
+                    <span className='ms-2'> {item?.rating}</span>
+                  </div>
+                  <button className='btn btn-outline-primary'>Favourite</button>
                 </div>
               </div>
             </div>
