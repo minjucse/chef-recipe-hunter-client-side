@@ -12,6 +12,7 @@ const ChefDetails = () => {
   const [detail, setDetail] = useState(detailInfo);
   const [chef, setChef] = useState({});
   const [cart, setCart] = useState([]);
+  const [showButton, setShowButton] = useState(false);
 
   useEffect(() => {
     fetch(`https://server-minjucse.vercel.app/chef/${id}`)
@@ -27,8 +28,8 @@ const ChefDetails = () => {
       setCart(items);
     }
   }, []);
-  const [showButton, setShowButton] = useState(false);
-  const onClick = (id) => {
+  
+  const onClick = () => {
 
     setShowButton(true);
     toast.success("Add Your Recipe !");
@@ -91,7 +92,7 @@ const ChefDetails = () => {
                     <span className='ms-2'> {item?.rating}</span>
                   </div>
                   {showButton ? <button className='btn btn-outline-primary' disabled>Favourite</button>:
-                  <button className='btn btn-outline-primary' onClick={onClick(item.id)}>Favourite</button>
+                  <button className='btn btn-outline-primary' onClick={onClick}>Favourite</button>
                   }
 
                   
